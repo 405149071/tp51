@@ -9,7 +9,7 @@ use think\Controller;
 $GLOBALS['oauth_weixin'] = array(
     'appid'			=>	'wx1af1087d38dbef58',
     'appkey'		=>	'acef1288f8fa51a0df2df42a112f6c35',
-    'callbackUrl'	=>	'http://test.iduotel.com',
+    'callbackUrl'	=>	'http://test.iduotel.com/index/index/wxcallback',
 );
 
 class Index extends Controller
