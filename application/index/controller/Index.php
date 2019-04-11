@@ -6,9 +6,9 @@ use app\common\TestB;
 use app\index\model\Student;
 
 $GLOBALS['oauth_weixin'] = array(
-    'appid'			=>	'',
-    'appkey'		=>	'',
-    'callbackUrl'	=>	'http://www.iduotel.com',
+    'appid'			=>	'wx1af1087d38dbef58',
+    'appkey'		=>	'acef1288f8fa51a0df2df42a112f6c35',
+    'callbackUrl'	=>	'http://test.iduotel.com',
 );
 
 class Index
@@ -44,8 +44,7 @@ class Index
     }
 
     public function weixin(){
-        $wxOAuth = new \Yurun\OAuthLogin\Weixin\OAuth2('wx1af1087d38dbef58', 'acef1288f8fa51a0df2df42a112f6c35');
-// 解决只能设置一个回调域名的问题，下面地址需要改成你项目中的地址，可以参考./loginAgent.php写法
+        $wxOAuth = new \Yurun\OAuthLogin\Weixin\OAuth2($GLOBALS['oauth_weixin']['appid'], $GLOBALS['oauth_weixin']['appkey']);// 解决只能设置一个回调域名的问题，下面地址需要改成你项目中的地址，可以参考./loginAgent.php写法
 // $wxOAuth->loginAgentUrl = 'http://localhost/test/Weixin/loginAgent.php';
 // 所有为null的可不传，这里为了演示和加注释就写了
         $url = $wxOAuth->getAuthUrl(
@@ -54,6 +53,11 @@ class Index
             null										// scope 只要登录默认为空即可
         );
         var_dump($url);
+    }
+
+    //微信回调测试
+    public function wxcallback(){
+
     }
 
 
