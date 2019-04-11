@@ -6,6 +6,8 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'tinymeng\\tools\\' => array($vendorDir . '/tinymeng/tools/src'),
+    'tinymeng\\OAuth2\\' => array($vendorDir . '/tinymeng/oauth/src'),
     'think\\composer\\' => array($vendorDir . '/topthink/think-installer/src'),
     'app\\' => array($baseDir . '/application'),
     'anerg\\OAuth2\\' => array($vendorDir . '/anerg2046/sns_auth/src'),

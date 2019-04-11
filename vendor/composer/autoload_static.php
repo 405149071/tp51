@@ -18,6 +18,8 @@ class ComposerStaticInita22be4c39fcd0330f27f3ff108ae38f3
     public static $prefixLengthsPsr4 = array (
         't' => 
         array (
+            'tinymeng\\tools\\' => 15,
+            'tinymeng\\OAuth2\\' => 16,
             'think\\composer\\' => 15,
         ),
         'a' => 
@@ -67,6 +69,14 @@ class ComposerStaticInita22be4c39fcd0330f27f3ff108ae38f3
     );
 
     public static $prefixDirsPsr4 = array (
+        'tinymeng\\tools\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tinymeng/tools/src',
+        ),
+        'tinymeng\\OAuth2\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/tinymeng/oauth/src',
+        ),
         'think\\composer\\' => 
         array (
             0 => __DIR__ . '/..' . '/topthink/think-installer/src',

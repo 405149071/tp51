@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b5dc81098fa71f6cb5db346b4912d402",
+    "content-hash": "df54aaf69f2fed1caeeb661c13357e09",
     "packages": [
         {
             "name": "anerg2046/sns_auth",
@@ -1099,6 +1099,111 @@
                 "psr-7"
             ],
             "time": "2018-08-30T16:28:28+00:00"
+        },
+        {
+            "name": "tinymeng/oauth",
+            "version": "v1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/majiameng/OAuth2.git",
+                "reference": "fc84f680abe0edaf72e3c948386e93023e04428b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/majiameng/OAuth2/zipball/fc84f680abe0edaf72e3c948386e93023e04428b",
+                "reference": "fc84f680abe0edaf72e3c948386e93023e04428b",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "tinymeng/tools": "^1.0.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "tinymeng\\OAuth2\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "JiaMeng Ma",
+                    "email": "666@majiameng.com",
+                    "homepage": "https://www.majiameng.com"
+                }
+            ],
+            "description": "weixin weibo qq alipay twitter google line facebook oauth",
+            "keywords": [
+                "alipay-login",
+                "github-login",
+                "login",
+                "oauth-login",
+                "php",
+                "qq-login",
+                "sina-login",
+                "tinymeng",
+                "wx-login"
+            ],
+            "time": "2018-12-20T11:55:16+00:00"
+        },
+        {
+            "name": "tinymeng/tools",
+            "version": "v1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/majiameng/tools.git",
+                "reference": "2171b5a4f5fa88934ee702b27a6e853d9ff28ef9"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/majiameng/tools/zipball/2171b5a4f5fa88934ee702b27a6e853d9ff28ef9",
+                "reference": "2171b5a4f5fa88934ee702b27a6e853d9ff28ef9",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "tinymeng\\tools\\": "src"
+                },
+                "files": []
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "JiaMeng Ma",
+                    "email": "666@majiameng.com",
+                    "homepage": "http://majiameng.com"
+                }
+            ],
+            "description": "Integrate third-party logins",
+            "keywords": [
+                "php",
+                "php-tools",
+                "tinymeng",
+                "tools"
+            ],
+            "time": "2018-12-13T04:41:50+00:00"
         },
         {
             "name": "topthink/framework",
