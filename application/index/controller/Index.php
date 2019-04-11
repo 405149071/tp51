@@ -4,6 +4,7 @@ namespace app\index\controller;
 use app\common\DuotelPMS;
 use app\common\TestB;
 use app\index\model\Student;
+use think\Controller;
 
 $GLOBALS['oauth_weixin'] = array(
     'appid'			=>	'wx1af1087d38dbef58',
@@ -11,7 +12,7 @@ $GLOBALS['oauth_weixin'] = array(
     'callbackUrl'	=>	'http://test.iduotel.com',
 );
 
-class Index
+class Index extends Controller
 {
     public function index()
     {
@@ -57,7 +58,8 @@ class Index
 
     //微信回调测试
     public function wxcallback(){
-
+        log4()->debug("进入微信回调");
+        log4()->debug($this->request->param());
     }
 
 
