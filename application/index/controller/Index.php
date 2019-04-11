@@ -58,7 +58,7 @@ class Index extends Controller
 
     //微信回调测试
     public function wxcallback(){
-        log4()->debug("进入微信回调");
+        log4()->debug("进入微信回调1");
         log4()->debug($this->request->param());
     }
 
