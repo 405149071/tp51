@@ -9,14 +9,16 @@ use tinymeng\tools\Tool;
 class ThirdLogin extends Controller
 {
     private $configFile = "thirdlogin";
+    private $callbackDomain = "http://test.iduotel.com";
     protected $config;
 
     /**
      * Description:  登录
-     * @author: JiaMeng <666@majiameng.com>
+     * @author: 
      * Updater:
      * @param $name
      * @return mixed
+     * 回调地址默认也是这个入口，回调会有从第三方传递过来的参数
      */
     public function index($name)
     {
@@ -32,7 +34,7 @@ class ThirdLogin extends Controller
 
     /**
      * Description:  获取配置文件
-     * @author: JiaMeng <666@majiameng.com>
+     * @author: 
      * Updater:
      * @param $name
      */
@@ -55,12 +57,13 @@ class ThirdLogin extends Controller
 
     /**
      * Description:  登录链接分配，执行跳转操作
-     * Author: JiaMeng <666@majiameng.com>
+     * Author: 
      * Updater:
      */
     public function login($name){
         /** 获取配置 */
         $this->getConfig($name);
+        $this->config['callback'] = $this->callbackDomain . $this->request->url();
         /**
          * 如果需要微信代理登录，则需要：
          * 1.将wx_proxy.php放置在微信公众号设定的回调域名某个地址，如 http://www.abc.com/proxy/wx_proxy.php
@@ -83,7 +86,7 @@ class ThirdLogin extends Controller
 
     /**
      * Description:  登录回调
-     * @author: JiaMeng <666@majiameng.com>
+     * @author: 
      * Updater:
      * @param $name
      * @return bool
