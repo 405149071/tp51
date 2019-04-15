@@ -138,7 +138,11 @@ abstract class Gateway implements GatewayInterface
      */
     protected function get($url, $params = [], $headers = [])
     {
-        return \tinymeng\tools\HttpRequest::httpGet($url, $params,$headers);
+        $client   = new \GuzzleHttp\Client();
+        $response = $client->request('GET', $url, ['proxy' => $this->config['proxy'], 'headers' => $headers, 'query' => $params]);
+        return $response->getBody()->getContents();
+
+//        return \tinymeng\tools\HttpRequest::httpGet($url, $params,$headers);
     }
 
     /**
@@ -152,7 +156,11 @@ abstract class Gateway implements GatewayInterface
      */
     protected function post($url, $params = [], $headers = [])
     {
-        $headers[] = 'Accept: application/json';//GitHub需要的header
-        return \tinymeng\tools\HttpRequest::httpPost($url, $params,$headers);
+        $client   = new \GuzzleHttp\Client();
+        $response = $client->request('POST', $url, ['proxy' => $this->config['proxy'], 'headers' => $headers, 'form_params' => $params, 'http_errors' => false]);
+        return $response->getBody()->getContents();
+
+//        $headers[] = 'Accept: application/json';//GitHub需要的header
+//        return \tinymeng\tools\HttpRequest::httpPost($url, $params,$headers);
     }
 }
