@@ -46,6 +46,7 @@ class ComposerStaticInita22be4c39fcd0330f27f3ff108ae38f3
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Container\\' => 14,
             'Psr\\Cache\\' => 10,
+            'PhpAmqpLib\\' => 11,
         ),
         'O' => 
         array (
@@ -132,6 +133,10 @@ class ComposerStaticInita22be4c39fcd0330f27f3ff108ae38f3
         'Psr\\Cache\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/cache/src',
+        ),
+        'PhpAmqpLib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/php-amqplib/php-amqplib/PhpAmqpLib',
         ),
         'Overtrue\\Socialite\\' => 
         array (

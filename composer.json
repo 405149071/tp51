@@ -21,7 +21,8 @@
         "overtrue/wechat": "~4.0",
         "anerg2046/sns_auth": "^2.0",
         "yurunsoft/yurun-oauth-login": "^2.0",
-        "tinymeng/oauth": "~1.0.0"
+        "tinymeng/oauth": "~1.0.0",
+        "php-amqplib/php-amqplib": "^2.9"
     },
     "autoload": {
         "psr-4": {
