@@ -29,6 +29,16 @@ class Test extends Controller
             "3"=>["3w","5w"],
             "5"=>["zigbee","wifi"]];
 
+        // item_spec 数据按do判断增还是改
+        $va = ["1_白色"=>["id"=>"","name"=>"白色","do"=>"add"],
+                "1_红色"=>["id"=>"","name"=>"红色","do"=>"add"],
+                "3_3w"=>["id"=>"","name"=>"3w","do"=>"add"],
+                "3_5w"=>["id"=>"","name"=>"5w","do"=>"add"],
+                "5_zigbee"=>["id"=>"","name"=>"zigbee","do"=>"add"],
+                "5_wifi"=>["id"=>"","name"=>"wifi","do"=>"add"]
+            ];
+
+//  下边数据全删全增
         $vb = [["1_白色","3_3w","5_zigbee","100"],
             ["1_白色","3_3w","5_wifi","50"],
             ["1_白色","3_5w","5_zigbee","10"],

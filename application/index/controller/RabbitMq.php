@@ -17,30 +17,11 @@ use PhpAmqpLib\Message\AMQPMessage;
 class RabbitMq
 {
 
-//rbmp example
-    public function test1()
-    {
-        $connection = new AMQPStreamConnection('localhost', 5672, 'wuzz', '123456','my_vhost');
-        $channel = $connection->channel();
-        $channel->queue_declare('hello_111', false, true);
-
-        $sendMsg = [
-            'name'=>'kevin'.rand(1,100),
-            'phone'=>'171921743'.rand(1,100),
-        ];
-
-        $msg = new AMQPMessage(json_encode($sendMsg));
-        $channel->basic_publish($msg, '', 'hello_111');
-        echo " [x] Sent 'Hello Kevin!'\n";
-        $channel->close();
-        $connection->close();
-    }
-
     public function test(){
         echo "rabbitmq";
     }
 
-    public function simpleSend(){
+    public function hello(){
         $connection = new AMQPStreamConnection('localhost', 5672, 'wuzz', '123456','my_vhost');
         $channel = $connection->channel();
 
@@ -54,13 +35,42 @@ class RabbitMq
         $connection->close();
     }
 
-    public function simpleRecv(){
+    public function helloReceive()
+    {
+        set_time_limit(0);
         $connection = new AMQPStreamConnection('localhost', 5672, 'wuzz', '123456','my_vhost');
         $channel = $connection->channel();
+        $channel->queue_declare('hello', false, false,false,false);
 
-        $channel->queue_declare('hello', false, false, false, false);
+        //两种方式1
+//        $receiver = new self();
+//        $channel->basic_consume('hello', '', false, true, false, false, [$receiver, 'callFunc']);
 
-        echo " [*] Waiting for messages. To exit press CTRL+C\n";
+        //两种方式2
+        $callback = function ($msg) {
+            echo ' [x] Received ', $msg->body, "\n";
+        };
+        $channel->basic_consume('hello', '', false, true, false, false , $callback);
+
+
+        while(true) {
+            $channel->wait();
+        }
+        $channel->close();
+        $connection->close();
+
+    }
+
+    public function callFunc($msg) {
+        $content = json_decode($msg->body,true);
+        var_dump($content);
+        //把用户信息插入数据库
+//        db('user_info')->insert([
+//            'ui_username'=>$content['name'],
+//            'ui_phone'=>$content['phone'],
+//        ]);
+
+
     }
 
 }
