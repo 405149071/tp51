@@ -112,5 +112,26 @@ class RabbitMq
 
     }
 
+    // 消息持久化
+    public function helloDura(){
+        $connection = new AMQPStreamConnection('localhost', 5672, 'wuzz', '123456','my_vhost');
+        $channel = $connection->channel();
+
+
+        $channel->queue_declare('hello_dura', false, true, false, false);
+
+
+        for($i=0;$i<10;$i++){
+            $msg = new AMQPMessage('Hello World!'.$i,array('delivery_mode' => AMQPMessage::DELIVERY_MODE_PERSISTENT));
+            $channel->basic_publish($msg, '', 'hello_dura');
+        }
+
+        echo " [x] Sent 'Hello World hello_dura!'\n";
+
+        $channel->close();
+        $connection->close();
+    }
+
+
 
 }
