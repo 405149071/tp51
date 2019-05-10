@@ -40,6 +40,10 @@ class RabbitMq
         $connection->close();
     }
 
+
+
+
+
     public function helloReceive()
     {
         set_time_limit(0);
@@ -78,21 +82,34 @@ class RabbitMq
 
     }
 
-    // work queue
-    public function workTask(){
+// 消息手工确认
+    public function helloReceiveConfirm()
+    {
+        set_time_limit(0);
         $connection = new AMQPStreamConnection('localhost', 5672, 'wuzz', '123456','my_vhost');
         $channel = $connection->channel();
+        $channel->queue_declare('hello', false, false,false,false);
+
+        //两种方式2
+        $callback = function ($msg) {
+            echo ' [x] Received ', $msg->body, "\n";
+            sleep(2);
+            echo " [x] Done\n";
+
+            $msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
+
+        };
 
 
-        $channel->queue_declare('hello', false, false, false, false);
-        $msg = new AMQPMessage('Hello World!');
-        $channel->basic_publish($msg, '', 'hello');
-        echo " [x] Sent 'Hello World!'\n";
+        $channel->basic_consume('hello', '', false, false, false, false , $callback);
 
 
-
+        while(true) {
+            $channel->wait();
+        }
         $channel->close();
         $connection->close();
+
     }
 
 
