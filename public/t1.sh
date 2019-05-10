@@ -1,1 +1,1 @@
-php index.php /index/rabbitmq/helloReceiveConfirm
+php index.php /index/rabbitmq.SimpleRece/rece
