@@ -17,4 +17,10 @@
 
 return [
 
-];
+];*/
+
+
+    // 首页
+Route::rule('/index2', "index/testc.Hi/hello");
+
+
