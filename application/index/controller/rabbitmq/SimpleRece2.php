@@ -12,7 +12,7 @@ namespace app\index\controller\rabbitmq;
 use PhpAmqpLib\Connection\AMQPStreamConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
-class SimpleRece
+class SimpleRece2
 {
     public function rece()
     {
@@ -28,7 +28,7 @@ class SimpleRece
         //两种方式2
         $callback = function ($msg) {
             echo ' [x] Received ', $msg->body, "\n";
-            sleep(1);
+            sleep(2);
             echo "done.";
         };
         $channel->basic_consume('hello', '', false, true, false, false , $callback);

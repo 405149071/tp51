@@ -22,7 +22,7 @@ class SimpleSend
         $channel->queue_declare('hello', false, false, false, false);
 
 
-        for($i=0;$i<10;$i++){
+        for($i=0;$i<50;$i++){
             $msg = new AMQPMessage('Hello World!'.$i);
             $channel->basic_publish($msg, '', 'hello');
         }
