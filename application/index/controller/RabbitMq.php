@@ -20,15 +20,20 @@ class RabbitMq
     public function test(){
         echo "rabbitmq";
     }
-
+// 第一种hello
     public function hello(){
         $connection = new AMQPStreamConnection('localhost', 5672, 'wuzz', '123456','my_vhost');
         $channel = $connection->channel();
 
 
         $channel->queue_declare('hello', false, false, false, false);
-        $msg = new AMQPMessage('Hello World!');
-        $channel->basic_publish($msg, '', 'hello');
+
+
+        for($i=0;$i<10;$i++){
+            $msg = new AMQPMessage('Hello World!'.$i);
+            $channel->basic_publish($msg, '', 'hello');
+        }
+
         echo " [x] Sent 'Hello World!'\n";
 
         $channel->close();
@@ -72,5 +77,23 @@ class RabbitMq
 
 
     }
+
+    // work queue
+    public function workTask(){
+        $connection = new AMQPStreamConnection('localhost', 5672, 'wuzz', '123456','my_vhost');
+        $channel = $connection->channel();
+
+
+        $channel->queue_declare('hello', false, false, false, false);
+        $msg = new AMQPMessage('Hello World!');
+        $channel->basic_publish($msg, '', 'hello');
+        echo " [x] Sent 'Hello World!'\n";
+
+
+
+        $channel->close();
+        $connection->close();
+    }
+
 
 }
