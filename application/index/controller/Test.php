@@ -104,5 +104,32 @@ class Test extends Controller
         echo 'OK';
     }
 
+    public function readFile(){
+set_time_limit(0);
+
+    for($y = 1970 ; $y<2100 ; $y++){
+        $json_string = file_get_contents('/Users/wuzz/wuzztest/py/json/'.$y.'.json');
+        $json_string = str_replace(" 00:00:00","",$json_string);
+        //var_dump($json_string);
+        // 用参数true把JSON字符串强制转成PHP数组
+        $data = json_decode(json_decode($json_string,true),true);
+        //var_dump($data);
+        foreach ($data as $v) {
+            //var_dump($v);
+            $row = DB::table("dt_calendar")->where("day","=",$v['time'])->find();
+            if($row){
+                DB::table("dt_calendar")
+                    ->where("day","=",$v['time'])
+                    ->data(['solar_terms'=>$v['name']])
+                    ->update();
+            }
+        }
+
+
+    }
+
+
+    }
+
 
 }
