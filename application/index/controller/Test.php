@@ -10,10 +10,12 @@
 
 namespace app\index\controller;
 
+use app\index\logic\Lunar;
 use app\index\logic\user\AUser;
 use app\index\logic\user\obj\Person;
 use app\index\logic\user\User;
 use think\Controller;
+use think\Db;
 
 class Test extends Controller
 {
@@ -59,6 +61,47 @@ class Test extends Controller
             }
         }
         var_dump($strall);
+    }
+
+    /***
+     * 追加日历数据
+     */
+    public function testLunar()
+    {
+
+        set_time_limit(0);
+        $start_time = '1970-01-01';
+        $end_time = '2099-12-31';
+        //获取时间差
+        $diff= strtotime($end_time)-strtotime($start_time);
+        $num = $diff/(24*60*60)+1;
+
+        for ($i=0; $i < $num; $i++) {
+            $arr = [];
+
+            $totime = strtotime("$start_time + $i days");//重点，指定日期加减多少天
+            $arr['day'] = date("Y-m-d",$totime);
+            $arr['yyyy'] = date("Y",$totime);
+            $arr['mm'] = date("m",$totime);
+            $arr['dd'] = date("d",$totime);
+
+            $lunar = new Lunar();
+            $data = $lunar->convertSolarToLunar($arr['yyyy'], $arr['mm'], $arr['dd']);
+            //var_dump($data);
+
+
+            $arr['ww'] = date("w", strtotime($arr['day']));
+            $arr['mm_lunar'] = $data[1];
+            $arr['dd_lunar'] = $data[2];
+            $arr['animals'] = $data[6];
+            $arr['era'] = $data[3];
+            $arr['mm_leaf'] = $data[7];
+            $arr['solar_terms'] = $data[8];
+            $arr['festival'] = $data[9];
+            DB::table("dt_calendar")->insert($arr);
+
+        }
+        echo 'OK';
     }
 
 
