@@ -66,9 +66,9 @@ class Test extends Controller
     /***
      * 追加日历数据
      */
-    public function testLunar()
+    public function testLunar1()
     {
-
+        //节气数据有问题，2020，2017。。。一部分数据错位，比如清明，python提供的那个倒是对的
         set_time_limit(0);
         $start_time = '1970-01-01';
         $end_time = '2099-12-31';
