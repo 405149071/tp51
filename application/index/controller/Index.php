@@ -96,4 +96,8 @@ class Index extends Controller
         log4()->debug($this->request->param());
     }
 
+    public function info(){
+        phpinfo();
+    }
+
 }
