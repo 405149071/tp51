@@ -13,6 +13,8 @@ return array(
     'anerg\\OAuth2\\' => array($vendorDir . '/anerg2046/sns_auth/src'),
     'Yurun\\Util\\' => array($vendorDir . '/yurunsoft/yurun-http/src'),
     'Yurun\\OAuthLogin\\' => array($vendorDir . '/yurunsoft/yurun-oauth-login/src'),
+    'Workerman\\Mqtt\\' => array($vendorDir . '/workerman/mqtt/src'),
+    'Workerman\\' => array($vendorDir . '/workerman/workerman'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Component\\HttpFoundation\\' => array($vendorDir . '/symfony/http-foundation'),
     'Symfony\\Component\\Cache\\' => array($vendorDir . '/symfony/cache'),

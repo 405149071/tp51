@@ -22,7 +22,8 @@
         "anerg2046/sns_auth": "^2.0",
         "yurunsoft/yurun-oauth-login": "^2.0",
         "tinymeng/oauth": "~1.0.0",
-        "php-amqplib/php-amqplib": "^2.9"
+        "php-amqplib/php-amqplib": "^2.9",
+        "workerman/mqtt": "^1.0"
     },
     "autoload": {
         "psr-4": {

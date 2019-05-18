@@ -32,6 +32,11 @@ class ComposerStaticInita22be4c39fcd0330f27f3ff108ae38f3
             'Yurun\\Util\\' => 11,
             'Yurun\\OAuthLogin\\' => 17,
         ),
+        'W' => 
+        array (
+            'Workerman\\Mqtt\\' => 15,
+            'Workerman\\' => 10,
+        ),
         'S' => 
         array (
             'Symfony\\Polyfill\\Mbstring\\' => 26,
@@ -97,6 +102,14 @@ class ComposerStaticInita22be4c39fcd0330f27f3ff108ae38f3
         'Yurun\\OAuthLogin\\' => 
         array (
             0 => __DIR__ . '/..' . '/yurunsoft/yurun-oauth-login/src',
+        ),
+        'Workerman\\Mqtt\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/workerman/mqtt/src',
+        ),
+        'Workerman\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/workerman/workerman',
         ),
         'Symfony\\Polyfill\\Mbstring\\' => 
         array (
