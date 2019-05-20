@@ -14,7 +14,12 @@ use Workerman\Worker;
 
 class Mqtt
 {
-
+    /**
+     * 订阅者，这种方式不行，没法启动
+     * 启动时候需要 php subscribe.php start
+     * 可以用下边的方法去代替workman的server的启动方式
+     * 如：php index.php /index/mqtt.Mqtt/start | stop | xxx
+     */
     public function subscribe(){
         $worker = new Worker();
         $worker->onWorkerStart = function(){
@@ -29,6 +34,51 @@ class Mqtt
         };
         Worker::runAll();
     }
+
+    /**
+     * 发布方式，可以直接在任何地方使用，当然也可以在控制器直接使用
+     */
+    public function publish(){
+
+        $mqtt = new Workerman\Mqtt\Client('mqtt://127.0.0.1:1883');
+        $mqtt->connect();
+        $mqtt->publish('hello', 'hello workerman mqtt');
+
+//        $worker = new Worker();
+//        $worker->onWorkerStart = function(){
+//            $mqtt = new Workerman\Mqtt\Client('mqtt://test.mosquitto.org:1883');
+//            $mqtt->onConnect = function($mqtt) {
+//                $mqtt->publish('hello', 'hello workerman mqtt');
+//            };
+//            $mqtt->connect();
+//        };
+//        Worker::runAll();
+    }
+
+    /**
+     * mosquitto 的发送方式。并不是workman的mqtt,但是可以和workman互通
+     */
+    public function pub(){
+
+        $client = new \Mosquitto\Client();
+        //$client->setCredentials('test','123456');
+        $client->connect("127.0.0.1", 1883, 5);
+
+        for($i = 0;$i<=10;$i++) {
+            $client->loop();
+            $mid = $client->publish('hello', "Hello from PHP at " . date('Y-m-d H:i:s'), 1, 0);
+            echo "Sent message ID: {$mid}\n";
+            $client->loop();
+
+            sleep(2);
+        }
+    }
+
+    /**
+     *
+     * 也不能直接调用。需要下边的方法去代替workman的server的启动方式
+     * 如：php index.php /index/mqtt.Mqtt/start | stop | xxx
+     */
 
     public function index($argv=array())
     {
@@ -46,6 +96,10 @@ class Mqtt
         Worker::runAll();
     }
 
+    /**
+     *
+     * 直接可以启动的控制器，启动workerman的server，mqtt只是其中之一
+     */
     public function start($mode='')
     {
         global $argv;
