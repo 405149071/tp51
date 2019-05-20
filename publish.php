@@ -13,7 +13,7 @@ $worker = new Worker();
 $worker->onWorkerStart = function(){
     $mqtt = new Workerman\Mqtt\Client('mqtt://127.0.0.1:1883');
     $mqtt->onConnect = function($mqtt) {
-        $mqtt->publish('test', 'hello workerman mqtthello workerman mqtthello workerman mqtthello workerman mqtthello workerman mqtthello workerman mqtthello workerman mqtthello workerman mqtthello workerman mqtthello workerman mqtthello workerman mqtt');
+        $mqtt->publish('test', 'hello 中国人workerman mqtthello workerman mqtthello workerman mqtthello workerman mqtthello workerman mqtthello workerman mqtthello workerman mqtthello workerman mqtthello workerman mqtthello workerman mqtthello workerman mqtt');
     };
     $mqtt->connect();
 };
