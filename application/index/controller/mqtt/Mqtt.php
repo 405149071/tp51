@@ -54,39 +54,7 @@ class Mqtt
 //        };
 //        Worker::runAll();
     }
-
-    /**
-     * Mosquitto\Clien 基础的发布
-     */
-    public function subscribeclient(){
-        $c = new Mosquitto\Client;
-        //$c->setCredentials('test','123123');
-        $c->connect('127.0.0.1', 1883, 50);
-        $c->subscribe('ss', 1);
-        $c->onMessage(function($m) {
-            var_dump($m);
-        });
-        $c->loopForever();
-    }
-
-    /**
-     * mosquitto 的发送方式。并不是workman的mqtt,但是可以和workman互通
-     */
-    public function pub(){
-
-        $client = new \Mosquitto\Client();
-        //$client->setCredentials('test','123456');
-        $client->connect("127.0.0.1", 1883, 5);
-
-        for($i = 0;$i<=10;$i++) {
-            $client->loop();
-            $mid = $client->publish('hello', "Hello from PHP at " . date('Y-m-d H:i:s'), 1, 0);
-            echo "Sent message ID: {$mid}\n";
-            $client->loop();
-
-            sleep(2);
-        }
-    }
+    
 
     /**
      *
