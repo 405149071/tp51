@@ -23,7 +23,8 @@
         "yurunsoft/yurun-oauth-login": "^2.0",
         "tinymeng/oauth": "~1.0.0",
         "php-amqplib/php-amqplib": "^2.9",
-        "workerman/mqtt": "^1.0"
+        "workerman/mqtt": "^1.0",
+        "bluerhinos/phpmqtt": "dev-master"
     },
     "autoload": {
         "psr-4": {

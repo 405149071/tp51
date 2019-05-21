@@ -72,6 +72,10 @@ class ComposerStaticInita22be4c39fcd0330f27f3ff108ae38f3
             'EasyWeChat\\' => 11,
             'EasyWeChatComposer\\' => 19,
         ),
+        'B' => 
+        array (
+            'Bluerhinos\\' => 11,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
@@ -178,6 +182,10 @@ class ComposerStaticInita22be4c39fcd0330f27f3ff108ae38f3
         'EasyWeChatComposer\\' => 
         array (
             0 => __DIR__ . '/..' . '/easywechat-composer/easywechat-composer/src',
+        ),
+        'Bluerhinos\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/bluerhinos/phpmqtt',
         ),
     );
 
