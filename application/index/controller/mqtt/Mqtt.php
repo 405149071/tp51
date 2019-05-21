@@ -43,7 +43,7 @@ class Mqtt
         $mqtt = new Workerman\Mqtt\Client('mqtt://127.0.0.1:1883');
         $mqtt->connect();
         $mqtt->publish('hello', 'hello workerman mqtt');
-
+// 以下为workerman的方式，不能直接用，参考前边几个方法
 //        $worker = new Worker();
 //        $worker->onWorkerStart = function(){
 //            $mqtt = new Workerman\Mqtt\Client('mqtt://test.mosquitto.org:1883');
@@ -53,6 +53,20 @@ class Mqtt
 //            $mqtt->connect();
 //        };
 //        Worker::runAll();
+    }
+
+    /**
+     * Mosquitto\Clien 基础的发布
+     */
+    public function subscribeclient(){
+        $c = new Mosquitto\Client;
+        //$c->setCredentials('test','123123');
+        $c->connect('127.0.0.1', 1883, 50);
+        $c->subscribe('ss', 1);
+        $c->onMessage(function($m) {
+            var_dump($m);
+        });
+        $c->loopForever();
     }
 
     /**
