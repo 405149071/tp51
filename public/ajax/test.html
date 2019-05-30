@@ -1,0 +1,70 @@
+<title>无标题文档</title>
+<meta charset="UTF-8">
+<script src="../static/js/jquery-3.2.1.min.js"></script>
+
+
+<!--ajax返回值 有text   JSON-->
+<!--ajax返回值  返回JSON  数据-->
+
+<!--返回一个值的--><!--$("#name").text(s.name);   //返回了一个值的-->
+
+
+</head>
+<body>
+<!--用户输入代号-->
+<div>请输入代号：<input type="text" id="daihao"/>
+    <br /><br />
+    <input type="button" value="查询" id="btn"/></div>
+<!--用户输入一个主键值，点击查询按扭-->
+<div id="name"></div><!--显示名称-->
+
+<!--输入人员代号，点击查询，在下面显示人员的名称-->
+<!--给按钮加一个点击事件-->
+</body>
+<script type="text/javascript">
+    $(document).ready(function(e) {
+        <!--给按钮加一个点击事件-->
+        $("#btn").click(function(){
+
+            <!--取到用户输入的值。取到之后存起来var code-->
+            var code = $("#daihao").val(); //val()是
+            <!--去调ajax-->
+
+
+            //alert(code);
+
+
+            $.ajax({
+
+                url:"chuli.php",
+                data:{diaohao:code},//前面命名，后面是值
+                type:"POST",
+                dataType:"JSON",
+                success: function(s){
+
+                    //alert(s.name);//如果是个JSON数据,这个data 可以点.出name来。   说明返回的data是一个ajax数据。
+                    //所以ajax，不用拼字符串了，直接调用一个方法json_encode();
+                    //但是要注意，再把数组转化成json是，注意它最好是一个关联数组。
+
+                    //alert(s.name);   //s. 这个是success: function(s)值
+                    console.log(s);
+                    $("#name").text(s.name);   //返回了一个值的
+
+                }
+
+
+
+            });
+        })
+
+
+
+
+
+    });
+
+
+
+
+</script>
+</html>
